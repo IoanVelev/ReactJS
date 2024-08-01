@@ -23,14 +23,8 @@ function App() {
     <>
     <h1>Movies</h1>
     
-    {/* <ul>
-      <li>{movies[0]}</li>
-      <li>{movies[1]}</li>
-      <li>{movies[2]}</li>
-    </ul> */}
-
     <ul>
-      {movies.map(movie => <li>{movie}</li>)}
+      {movies.map(movie => <li key={movie}>{movie}</li>)}
     </ul>
 
     <button onClick={onButtonClick}>Change list</button>
