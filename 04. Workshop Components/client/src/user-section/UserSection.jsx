@@ -4,6 +4,7 @@ import Pagination from "../components/pagination/Pagination";
 import { useEffect, useState } from "react";
 import AddUser from "./user-add/AddUser";
 import UserDetails from "./user-details/UserDetails";
+import DeleteUser from "./user-delete/DeleteUser";
 
 const baseUrl = `http://localhost:3030/jsonstore`;
 
@@ -11,6 +12,7 @@ export default function UserSection() {
   const [users, setUsers] = useState([]);
   const [showAddUser, setShowAddUser] = useState(false);
   const [showUserDetailsById, setShowUserDetailsById] = useState(null);
+  const [showUserDeleteById, setShowUserDeleteById] = useState(null);
 
   useEffect(() => {
     (async function getUsers() {
@@ -66,6 +68,24 @@ export default function UserSection() {
     setShowUserDetailsById(userId);
   }
 
+  const userDeleteClickHandler = (userId) => {
+    setShowUserDeleteById(userId);
+  }
+
+  const userDeleteHandler = async (userId) => {
+    //delete request to server
+    const response = await fetch(`${baseUrl}/users/${userId}`, {
+      method: 'DELETE'
+    });
+
+
+    //delete from local state
+    setUsers(oldUsers => oldUsers.filter(user => user._id !== userId));
+
+    //close modal
+    setShowUserDeleteById(null);
+  }
+
   return (
     <>
       <section className="card users-container">
@@ -74,6 +94,7 @@ export default function UserSection() {
         <UserList
           users={users}
           onUserDetailsClick={userDetailsClickHandler}
+          onUserDeleteClick={userDeleteClickHandler}
         />
 
         {showAddUser && (
@@ -88,6 +109,15 @@ export default function UserSection() {
             onClose={() => setShowUserDetailsById(null)}
           />
         )}
+
+        {showUserDeleteById && (
+          <DeleteUser
+          onClose={() => setShowUserDeleteById(null)}
+          onUserDeleteClick={() => userDeleteHandler(showUserDeleteById)}
+          />
+        )}
+
+        
 
         <button className="btn-add btn" onClick={addUserClickHandler}>
           Add new user
