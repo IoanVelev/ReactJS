@@ -32,8 +32,8 @@ export default function UserSection() {
     setShowAddUser(true);
   };
 
-  const closeAddUserHandler = (userId) => {
-    setShowAddUser(userId);
+  const closeAddUserHandler = () => {
+    setShowAddUser(false);
   };
 
   const addUserData = async (e) => {
