@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
 export default function ControlledForm() {
-    const [user, setUser] = useState({
-        _id: "",
-        username: "defaultUsername",
-        email: "",
-        age: ""
+    const [formValues, setFormValues] = useState({
+        username: '',
+        password: '',
+        email: '',
+        age: ''
     });
 
     useEffect(() => {
@@ -13,7 +13,7 @@ export default function ControlledForm() {
             const response = await fetch('http://localhost:3030/jsonstore/advanced/profiles/fb352199-bcbc-4e1d-a1dc-ed346a6fb49a');
             const profile = await response.json();
 
-            setUser(profile);
+            setUsername(profile.username);
         })();
     }, []);
 
@@ -21,8 +21,11 @@ export default function ControlledForm() {
         e.preventDefault();
     }
 
-    const usernameChangeHandler = (e) => {
-        setUser(oldUser => ({ ...oldUser, username: e.target.value }));
+    const changeHandler = (e) => { 
+        setFormValues(oldValues => ({ 
+            ...oldValues,
+            [e.target.name]: e.target.value
+        }));
     }
 
     return (
@@ -33,15 +36,47 @@ export default function ControlledForm() {
                         <label htmlFor="username">Username</label>
                         <input type="text" 
                         name="username" 
-                        id="username" 
-                        value={user.username}
-                        onChange={usernameChangeHandler}
+                        id="username"
+                        placeholder="Jane Doe" 
+                        value={formValues.username}
+                        onChange={changeHandler}
                         />
                     </div>
 
                     <div>
                         <label htmlFor="password">Password</label>
-                        <input type="password" name="password" id="password" />
+                        <input 
+                        type="password" 
+                        name="password"
+                        placeholder="******" 
+                        id="password"
+                        value={formValues.password}
+                        onChange={changeHandler}
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="email">Email</label>
+                        <input 
+                        type="email" 
+                        name="email"
+                        placeholder="janedoe@gmail.com" 
+                        id="email"
+                        value={formValues.email}
+                        onChange={changeHandler}
+                        />
+                    </div>
+
+                    <div>
+                        <label htmlFor="age">Age</label>
+                        <input 
+                        type="age" 
+                        name="age"
+                        placeholder="18" 
+                        id="age"
+                        value={formValues.age}
+                        onChange={changeHandler}
+                        />
                     </div>
 
                     <div>
