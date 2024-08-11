@@ -1,0 +1,52 @@
+{
+  "hash": "802c03fd",
+  "configHash": "67846756",
+  "lockfileHash": "e3b0c442",
+  "browserHash": "00516c45",
+  "optimized": {
+    "@headlessui/react": {
+      "src": "../../node_modules/@headlessui/react/dist/headlessui.esm.js",
+      "file": "@headlessui_react.js",
+      "fileHash": "0c6bf132",
+      "needsInterop": false
+    },
+    "@heroicons/react/20/solid": {
+      "src": "../../node_modules/@heroicons/react/20/solid/esm/index.js",
+      "file": "@heroicons_react_20_solid.js",
+      "fileHash": "a939a01c",
+      "needsInterop": false
+    },
+    "@heroicons/react/24/outline": {
+      "src": "../../node_modules/@heroicons/react/24/outline/esm/index.js",
+      "file": "@heroicons_react_24_outline.js",
+      "fileHash": "2a8178c3",
+      "needsInterop": false
+    },
+    "react": {
+      "src": "../../node_modules/react/index.js",
+      "file": "react.js",
+      "fileHash": "1fa9a266",
+      "needsInterop": true
+    },
+    "react-dom/client": {
+      "src": "../../node_modules/react-dom/client.js",
+      "file": "react-dom_client.js",
+      "fileHash": "cbb02bcb",
+      "needsInterop": true
+    },
+    "react-router-dom": {
+      "src": "../../node_modules/react-router-dom/dist/index.js",
+      "file": "react-router-dom.js",
+      "fileHash": "6fb47efd",
+      "needsInterop": false
+    }
+  },
+  "chunks": {
+    "chunk-QPG7G3M7": {
+      "file": "chunk-QPG7G3M7.js"
+    },
+    "chunk-UTEJFLXC": {
+      "file": "chunk-UTEJFLXC.js"
+    }
+  }
+}

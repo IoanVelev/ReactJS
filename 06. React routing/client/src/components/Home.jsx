@@ -1,13 +1,6 @@
-import { useState } from 'react'
-import Header from './Navigation'
 
 export default function Home() {
-  
-
   return (
-    <div className="bg-white">
-      <Header />
-
       <div className="relative isolate px-6 pt-14 lg:px-8">
         <div
           aria-hidden="true"
@@ -65,6 +58,5 @@ export default function Home() {
           />
         </div>
       </div>
-    </div>
-  )
+  );
 }

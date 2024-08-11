@@ -1,10 +1,12 @@
 import { Dialog, DialogPanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 import { useState } from 'react'
 const navigation = [
     { name: 'Home', href: '/' },
     { name: 'About', href: '/about' },
     { name: 'Pricing', href: '/pricing' },
+    { name: 'Articles', href: '/articles'}
   ]
 
 export default function Header() {
@@ -36,9 +38,9 @@ export default function Header() {
           </div>
           <div className="hidden lg:flex lg:gap-x-12">
             {navigation.map((item) => (
-              <a key={item.name} href={item.href} className="text-sm font-semibold leading-6 text-gray-900">
+              <Link key={item.name} to={item.href} className="text-sm font-semibold leading-6 text-gray-900">
                 {item.name}
-              </a>
+              </Link>
             ))}
           </div>
           <div className="hidden lg:flex lg:flex-1 lg:justify-end">
@@ -72,13 +74,13 @@ export default function Header() {
               <div className="-my-6 divide-y divide-gray-500/10">
                 <div className="space-y-2 py-6">
                   {navigation.map((item) => (
-                    <a
+                    <Link
                       key={item.name}
-                      href={item.href}
+                      to={item.href}
                       className="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50"
                     >
                       {item.name}
-                    </a>
+                    </Link>
                   ))}
                 </div>
                 <div className="py-6">
